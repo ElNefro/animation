@@ -1,22 +1,22 @@
 ﻿#include <iostream>
 #include <Windows.h>
-#include <thread>
-#include <chrono>
+#include <cstdlib>
+#include <string>
 
 
 void setColor(int color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
 }
-void sleep_ms(int ms) {
-    std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-}
+
 
 void MainMenu();
 void ColorSentings();
 void Animation();
+int Run();
 
 int choise;
+std::string cmd;
 
 int main()
 {
@@ -27,45 +27,115 @@ int main()
 
 void Animation()
 {
-    // Узкий curl, состоящий из набора точек, которые постепенно рисуют форму
-    const int width = 50;
-    const int height = 10;
-    const int frames = 60;
-    const int delay_ms = 50;
+    do
+    {
+        system("cls");
+        std::cout << "\n\n\n\n \t\t\t\t\t\tВыберите стандартную анимацию\n\n";
+        std::cout << "\t\t\t\t\t1) batman \n";
+        std::cout << "\t\t\t\t\t2) can-you-hear-me \n";
+        std::cout << "\t\t\t\t\t3) hes \n";
+        std::cout << "\t\t\t\t\t4) knot \n";
+        std::cout << "\t\t\t\t\t5) bnr \n";
+        std::cout << "\t\t\t\t\t6) coin \n";
+        std::cout << "\t\t\t\t\t7) donut \n";
+        std::cout << "\t\t\t\t\t8) parrot \n";
+        std::cout << "\t\t\t\t\t9) spidyswing \n";
+        std::cout << "\t\t\t\t\t10) dvd \n";
+        std::cout << "\t\t\t\t\t11) playstation \n";
+        std::cout << "\t\t\t\t\t12) batman-running \n";
+        std::cout << "\t\t\t\t\t13) clock \n";
+        std::cout << "\t\t\t\t\t14) forrest \n";
+        std::cout << "\t\t\t\t\t15) nyan \n";
+        std::cout << "\t\t\t\t\t16) rick \n";
+        std::cout << "\t\t\t\t\t17) torus-knot \n\n";
+        std::cout << "\t\t\t\t\t0) Выход \n\n";
+        std::cout << "\t\t\t\t\tВвод:";
 
-    // Функция печати кадра curl: здесь будем просто выводить символы в разных позициях
-    for (int f = 0; f < frames; ++f) {
-        // Очистка экрана
-        // ANSI ESC[2J — очистка экрана
-        // ESC[H — перемещение курсора в начало
-        std::cout << "\033[2J\033[H";
+        std::cin >> choise;
 
-        // Рисуем curl-подобную фигуру из небольших точек по мере движения
-        for (int y = 0; y < height; ++y) {
-            for (int x = 0; x < width; ++x) {
-                // Простейшая формула curl-подобного паттерна: орнамент в виде завитка
-                int cx = (x + f) % width;
-                int cy = (y + f / 2) % height;
-
-                // Небольшой момент: отрисовываем точку, если условие выполнено
-                if ((cx * cy + f) % 7 == 0) {
-                    std::cout << "*";
-                }
-                else {
-                    std::cout << " ";
-                }
-            }
-            std::cout << "\n";
+        if (choise == 1)
+        {
+            cmd = "cmd.exe /C curl ascii.live/batman";
         }
+        else if (choise == 2)
+        {
+            cmd = "cmd.exe /C curl ascii.live/can-you-hear-me";
+        }
+        else if (choise == 3)
+        {
+            cmd = "cmd.exe /C curl ascii.live/hes";
+        }
+        else if (choise == 4)
+        {
+            cmd = "cmd.exe /C curl ascii.live/knot";
+        }
+        else if (choise == 5)
+        {
+            cmd = "cmd.exe /C curl ascii.live/bnr";
+        }
+        else if (choise == 6)
+        {
+            cmd = "cmd.exe /C curl ascii.live/coin";
+        }
+        else if (choise == 7)
+        {
+            cmd = "cmd.exe /C curl ascii.live/donut";
+        }
+        else if (choise == 8)
+        {
+            cmd = "cmd.exe /C curl ascii.live/parrot";
+        }
+        else if (choise == 9)
+        {
+            cmd = "cmd.exe /C curl ascii.live/spidyswing";
+        }
+        else if (choise == 10)
+        {
+            cmd = "cmd.exe /C curl ascii.live/dvd";
+        }
+        else if (choise == 11)
+        {
+            cmd = "cmd.exe /C curl ascii.live/playstation";
+        }
+        else if (choise == 12)
+        {
+            cmd = "cmd.exe /C curl ascii.live/batman-running";
+        }
+        else if (choise == 13)
+        {
+            cmd = "cmd.exe /C curl ascii.live/clock";
+        }
+        else if (choise == 14)
+        {
+            cmd = "cmd.exe /C curl ascii.live/forrest";
+        }
+        else if (choise == 15)
+        {
+            cmd = "cmd.exe /C curl ascii.live/nyan";
+        }
+        else if (choise == 16)
+        {
+            cmd = "cmd.exe /C curl ascii.live/rick";
+        }
+        else if (choise == 17)
+        {
+            cmd = "cmd.exe /C curl ascii.live/torus-knot";
+        }
+        else if (choise == 0)
+        {
+            
+        }
+        else
+        {
+            system("cls");
+            std::cout << "\n\n\n\n \t\t\t\t\tERR!!!!!! \n\n";
+            system("pause");
+            continue;
+        }
+    } while (choise == NULL);
 
-        // Переход к следующему кадру
-        std::cout.flush();
-        sleep_ms(delay_ms);
-    }
-
-    // Финальный вывод
-    std::cout << "\033[0m"; // сброс стилей
-    std::cout << std::endl;
+    Run();
+    
 }
 
 void MainMenu()
@@ -183,4 +253,11 @@ void ColorSentings()
     } while (true);
 
     MainMenu();
+}
+
+int Run()
+{
+   
+    int ret = std::system(cmd.c_str());
+    return ret;
 }
