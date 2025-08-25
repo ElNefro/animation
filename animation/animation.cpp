@@ -4,6 +4,7 @@
 #include <string>
 
 
+
 void setColor(int color) {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
@@ -21,6 +22,8 @@ std::string cmd;
 int main()
 {
     setlocale(LC_ALL, "ru");
+
+    
 
     MainMenu();
 }
@@ -123,7 +126,7 @@ void Animation()
         }
         else if (choise == 0)
         {
-            
+            MainMenu();
         }
         else
         {
@@ -216,7 +219,7 @@ void ColorSentings()
         std::cout << "\t\t\t\t\t1) Красный \n";
         std::cout << "\t\t\t\t\t2) Зеленый \n";
         std::cout << "\t\t\t\t\t3) Синий \n";
-        std::cout << "\t\t\t\t\t4) По умолчанию \n";
+        std::cout << "\t\t\t\t\t4) По умолчанию \n\n";
         std::cout << "\t\t\t\t\t0) Выход \n\n";
 
         std::cout << "\t\t\t\t\tВвод: ";
@@ -225,6 +228,7 @@ void ColorSentings()
 
         if (choise == 1)
         {
+           
             setColor(FOREGROUND_RED | FOREGROUND_INTENSITY);
         }
         else if (choise == 2)
@@ -257,7 +261,8 @@ void ColorSentings()
 
 int Run()
 {
-   
+  
     int ret = std::system(cmd.c_str());
     return ret;
+ 
 }
